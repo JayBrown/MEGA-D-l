@@ -11,7 +11,14 @@ Minimum OS: **OS X 10.8**
 
 * click on a MEGA URL (or select a bunch of MEGA URLs), and select **Download from MEGA** from **Services** in the contextual menu
 * on first run, **MEGA D/l** will ask you to select the location of your MEGA download folder
-* you can reset your choice by running the command `rm -rf $HOME/Library/Preferences/local.lcars.MEGAdl.plist`; after that you can select a different folder
+
+You can reset your download folder choice by running the command
+
+```
+rm -rf $HOME/Library/Preferences/local.lcars.MEGAdl.plist
+```
+
+After that you can select a different MEGA download folder.
 
 ## Installations
 ### megatools [prerequisite]
