@@ -1,10 +1,10 @@
-![Checksums-platform-macos](https://img.shields.io/badge/platform-macOS-lightgrey.svg)
-![Checksums-code-shell](https://img.shields.io/badge/code-shell-yellow.svg)
-[![Checksums-depend-megatools](https://img.shields.io/badge/dependency-megatools%201.9.98-green.svg)](https://github.com/megous/megatools)
-[![Checksums-depend-tnote](https://img.shields.io/badge/dependency-terminal--notifier%201.7.1-green.svg)](https://github.com/alloy/terminal-notifier)
-[![Checksums-license](http://img.shields.io/badge/license-MIT+-blue.svg)](https://github.com/JayBrown/Checksums/blob/master/license.md)
+![MEGAdl-platform-macos](https://img.shields.io/badge/platform-macOS-lightgrey.svg)
+![MEGAdl-code-shell](https://img.shields.io/badge/code-shell-yellow.svg)
+[![MEGAdl-depend-megatools](https://img.shields.io/badge/dependency-megatools%201.9.98-green.svg)](https://github.com/megous/megatools)
+[![MEGAdl-depend-tnote](https://img.shields.io/badge/dependency-terminal--notifier%201.7.1-green.svg)](https://github.com/alloy/terminal-notifier)
+[![MEGAdl-license](http://img.shields.io/badge/license-MIT+-blue.svg)](https://github.com/JayBrown/MEGA-D-l/blob/master/license.md)
 
-# MEGA D/l <img src="https://github.com/JayBrown/Checksums/blob/master/img/jb-img.png" height="20px"/>
+# MEGA D/l <img src="https://github.com/JayBrown/MEGA-D-l/blob/master/img/jb-img.png" height="20px"/>
 **macOS workflow and shell script to download files from public mega.nz shares using the megatools**
 
 Minimum OS: **OS X 10.8**
@@ -32,7 +32,7 @@ Only necessary if for some reason you want to run this from the shell or another
 
 * Move the script `megadl.sh` to e.g. `/usr/local/bin`
 * In your shell enter `chmod +x /usr/local/bin/megadl.sh`
-* Run the script with `checksums.sh '<URL>'` (it has to be in your $PATH)
+* Run the script with `megadl.sh '<URL>'` (it has to be in your $PATH)
 
 ### terminal-notifier [optional, recommended]
 More information: [terminal-notifier](https://github.com/alloy/terminal-notifier)
