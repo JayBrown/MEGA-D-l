@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# MEGA D/l v1.0.0
+# MEGA D/l v1.1.0
 # MEGA D/l (shell script version)
 
 # download public mega.nz shares
@@ -13,7 +13,7 @@
 LANG=en_US.UTF-8
 export PATH=/usr/local/bin:$PATH
 ACCOUNT=$(/usr/bin/id -un)
-CURRENT_VERSION="1.0"
+CURRENT_VERSION="1.1"
 
 # notify function
 notify () {
@@ -136,15 +136,28 @@ fi
 for URL in "$@"
 do
 
-# convert URL
+# check & convert URL
 if [[ $URL == "http://www.nullrefer.com"* ]] ; then
 	URL=$(echo $URL | /usr/bin/awk -F? '{print $2}')
 fi
-if [[ $URL != *"mega.nz/"* ]] ; then
-	notify "❌ Error!" "Not a mega.nz URL!"
+if [[ $URL != *"mega.nz/"* ]] && [[ $URL != *"mega.co.nz/"* ]] ; then
+	notify "❌ Error!" "Not a MEGA URL!"
+	continue
+elif [[ $URL == *" ... "* ]] ; then
+	notify "☠️ Error!" "Poor URL formatting"
+	continue
 else
+	if [[ $URL == *"mega.co.nz/"* ]] ; then
+		URL=$(echo $URL | /usr/bin/awk '{gsub("mega.co.nz","mega.nz"); print}')
+	fi
 	MEGA_URL=$(echo $URL | /usr/bin/awk '{gsub("\#","_"); gsub("\!","+"); print}')
 	CODE=$(echo "$MEGA_URL" | /usr/bin/awk -F+ '{print $2}')
+	SECRET=$(echo "$MEGA_URL" | /usr/bin/awk -F+ '{print $3}')
+	SEC_COUNT=$(echo "$SECRET" | /usr/bin/wc -c | /usr/bin/xargs)
+	if [[ "$SEC_COUNT" -lt 44 ]] ; then
+		notify "☠️ Error!" "Poor URL formatting"
+		continue
+	fi
 fi
 
 # check if file online or offline
