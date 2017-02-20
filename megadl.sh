@@ -210,3 +210,5 @@ fi
 notify "✅ Finished download" "$DOWN [$CODE]"
 
 done
+
+updater
