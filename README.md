@@ -13,11 +13,7 @@ Minimum OS: **OS X 10.8**
 * on first run, **MEGA D/l** will ask you to select the location of your MEGA download folder
 
 You can reset your download folder choice by running the command
-
-```
-rm -rf $HOME/Library/Preferences/local.lcars.MEGAdl.plist
-```
-
+`rm -rf $HOME/Library/Preferences/local.lcars.MEGAdl.plist`
 After that you can select a different MEGA download folder.
 
 ## Installations
@@ -32,7 +28,6 @@ More information: [megatools](https://github.com/megous/megatools)
 #### Workflow
 * Double-click on the workflow file to install
 * If you encounter problems, open it with Automator and save/install from there
-* Standard Finder integration in the Services menu
 
 #### Main shell script [optional]
 Only necessary if for some reason you want to run this from the shell or another shell script. For normal use the workflow will be sufficient.
