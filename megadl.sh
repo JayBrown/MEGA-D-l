@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# MEGA D/l v1.1.0
+# MEGA D/l v1.1.1
 # MEGA D/l (shell script version)
 
 # download public mega.nz shares
@@ -13,7 +13,7 @@
 LANG=en_US.UTF-8
 export PATH=/usr/local/bin:$PATH
 ACCOUNT=$(/usr/bin/id -un)
-CURRENT_VERSION="1.1"
+CURRENT_VERSION="1.11"
 
 # notify function
 notify () {
@@ -36,7 +36,7 @@ EOT
 # check for update
 updater () {
 	echo "Checking for update..."
-	NEWEST_VERSION=$(/usr/bin/curl --silent https://api.github.com/repos/JayBrown/Checksums/releases/latest | /usr/bin/awk '/tag_name/ {print $2}' | xargs)
+	NEWEST_VERSION=$(/usr/bin/curl --silent https://api.github.com/repos/JayBrown/MEGA-D-l/releases/latest | /usr/bin/awk '/tag_name/ {print $2}' | xargs)
 	if [[ "$NEWEST_VERSION" == "" ]] ; then
 		NEWEST_VERSION="0"
 	fi
