@@ -177,7 +177,8 @@ DUPED=""
 DOWN=$("$MEGADOWN" "$URL" --no-progress --print-names --path "$DL_DIR" 2>&1)
 if [[ $(echo "$DOWN" | /usr/bin/grep "File exists") != "" ]] ; then
 	# if file exists, move it to dupes
-	PREVIOUS=$(echo "$DOWN" | rev | /usr/bin/awk -F\' '{print $2}' | rev)
+	PREVIOUS=$(echo "$DOWN" | /usr/bin/awk -F"Error opening file '" '{print $2}' | rev | /usr/bin/awk -F":'" '{print $2}' | rev)
+	echo "$PREVIOUS"
 	PREV_NAME=$(/usr/bin/basename "$PREVIOUS")
 	mkdir -p "$DL_DIR/MEGAdupes" && mv "$PREVIOUS" "$DL_DIR/MEGAdupes/$PREV_NAME" && DUPED="true"
 	# download for real this time
@@ -207,7 +208,16 @@ if [[ "$DUPED" == "true" ]] ; then
 	fi
 fi
 
-notify "✅ Finished download" "$DOWN [$CODE]"
+# calculate file size
+BYTES=$(/usr/bin/stat -f%z "$DL_DIR/$DOWN")
+MEGABYTES=$(bc -l <<< "scale=2; $BYTES/1000000")
+if [[ ($MEGABYTES<1) ]] ; then
+	SIZE="0$MEGABYTES"
+else
+	SIZE="$MEGABYTES"
+fi
+
+notify "✅ Finished d/l: $SIZE MB" "$DOWN [$CODE]"
 
 done
 
